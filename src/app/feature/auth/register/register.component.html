@@ -1,0 +1,35 @@
+<div class="register-wrapper">
+  <div class="card">
+    <div class="brand">
+      <div class="logo">R</div>
+      <div>
+        <h2>Crear cuenta</h2>
+        <p>Regístrate para acceder al panel</p>
+      </div>
+    </div>
+
+    <form (ngSubmit)="submit()" class="form">
+      <label>
+        <span>Usuario</span>
+        <input [(ngModel)]="username" name="username" required />
+      </label>
+
+      <label>
+        <span>Email</span>
+        <input type="email" [(ngModel)]="email" name="email" required />
+      </label>
+
+      <label>
+        <span>Contraseña</span>
+        <input type="password" [(ngModel)]="password" name="password" required />
+      </label>
+
+      <button class="btn" type="submit" [disabled]="loading">
+        <span [hidden]="loading">Registrarme</span>
+        <span [hidden]="!loading" class="loader"></span>
+      </button>
+
+      <p class="error" [hidden]="!error">{{ error }}</p>
+    </form>
+  </div>
+</div>

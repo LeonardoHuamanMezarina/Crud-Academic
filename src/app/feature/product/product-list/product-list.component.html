@@ -1,0 +1,123 @@
+<!-- Layout principal -->
+<div class="main-layout">
+  <!-- Sidebar a la izquierda -->
+  <app-sidebar class="sidebar-fixed"></app-sidebar>
+  
+  <!-- Contenido a la derecha con header arriba -->
+  <div class="right-content">
+    <!-- Header en la parte superior derecha -->
+    <div class="header-fixed">
+      <app-header></app-header>
+      <div class="header-actions">
+         <button class="btn-reportes" (click)="report()">
+          <span>Descargar Reportes</span>
+          <span class="icono-mas">↓</span>
+        </button>
+        <button (click)="goToFormulario()" class="btn-agregar-cliente">
+          <span>Agregar Producto</span>
+          <span class="icono-mas">+</span>
+        </button>
+      </div>  
+    </div>
+    
+    <!-- Contenido principal debajo del header -->
+    <div class="main-content">
+      <div class="customer-list-container">
+        
+        <!-- Indicador de carga -->
+        <div *ngIf="isLoading" class="loading-indicator">
+          Cargando productos...
+        </div>
+
+        <!-- Mensaje de error -->
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+
+        <div class="table-container">
+          <table mat-table [dataSource]="products" class="mat-elevation-z8">
+            <!-- name -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Nombre </th>
+              <td mat-cell *matCellDef="let product"> {{product.name | uppercase}} </td>
+            </ng-container>
+            <!-- specification -->
+            <ng-container matColumnDef="specification">
+              <th mat-header-cell *matHeaderCellDef> Especificación </th>
+              <td mat-cell *matCellDef="let product"> {{product.specification}} </td>
+            </ng-container>
+            <!-- description -->
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef> Descripción </th>
+              <td mat-cell *matCellDef="let product"> {{product.description}} </td>
+            </ng-container>
+            <!-- category -->
+            <ng-container matColumnDef="category">
+              <th mat-header-cell *matHeaderCellDef> Categoría </th>
+              <td mat-cell *matCellDef="let product"> {{product.category}} </td>
+            </ng-container>
+            <!-- unitPrice -->
+            <ng-container matColumnDef="unitPrice">
+              <th mat-header-cell *matHeaderCellDef> Precio Unitario </th>
+              <td mat-cell *matCellDef="let product"> {{product.unitPrice | currency:'S/.'}} </td>
+            </ng-container>
+            <!-- stock -->
+            <ng-container matColumnDef="stock">
+              <th mat-header-cell *matHeaderCellDef> Stock </th>
+              <td mat-cell *matCellDef="let product" [appLowStockBadge]="product.stock"> </td>
+            </ng-container>
+            <!-- status -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Estado </th>
+              <td mat-cell *matCellDef="let product">
+                <span class="estado-badge" 
+                      [ngClass]="product.status === 'A' ? 'estado-activo' : 'estado-inactivo'">
+                  {{ product.status === 'A' ? 'Activo' : 'Inactivo' }}
+                </span>
+              </td>
+            </ng-container>
+            <!-- internalCode -->
+            <ng-container matColumnDef="internalCode">
+              <th mat-header-cell *matHeaderCellDef> Código Interno </th>
+              <td mat-cell *matCellDef="let product"> {{product.internalCode}} </td>
+            </ng-container>
+            <!-- registrationDate -->
+            <ng-container matColumnDef="registrationDate">
+              <th mat-header-cell *matHeaderCellDef> Fecha Registro </th>
+              <td mat-cell *matCellDef="let product"> {{product.registrationDate | date:'dd/MM/yyyy HH:mm'}} </td>
+            </ng-container>
+            <!-- brandId -->
+            <ng-container matColumnDef="brandId">
+              <th mat-header-cell *matHeaderCellDef> ID Marca </th>
+              <td mat-cell *matCellDef="let product"> {{product.brandId}} </td>
+            </ng-container>
+            <!-- acciones -->
+            <ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef> Acciones </th>
+              <td mat-cell *matCellDef="let product" class="acciones-cell">
+                <!-- Botón Editar - siempre visible -->
+                <button mat-raised-button color="primary" (click)="editProduct(product.idProduct)" class="btn-accion">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                
+                <!-- Botón Eliminar - solo para activos -->
+                <button *ngIf="product.status === 'A'" 
+                        mat-raised-button color="warn" (click)="confirmDeleteProduct(product.idProduct, product.name)" class="btn-accion">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                
+                <!-- Botón Restaurar - solo para inactivos -->
+                <button *ngIf="product.status === 'I'" 
+                        mat-raised-button color="accent" (click)="confirmRestoreProduct(product.idProduct, product.name)" class="btn-accion">
+                  <mat-icon>restore</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

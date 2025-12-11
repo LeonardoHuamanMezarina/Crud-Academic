@@ -1,0 +1,54 @@
+:host {
+	display: block;
+	box-sizing: border-box;
+	padding: 18px 28px; /* espacio interior del diálogo */
+	max-width: calc(100vw - 80px);
+}
+
+.container { padding: 0; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { padding: 12px 18px; border-bottom: 1px solid #eee; }
+.btn { background:#eee; border: none; padding:6px 10px; cursor:pointer }
+.error { color: red }
+
+.summary-table { width: 100%; border-collapse: collapse; margin-top: 12px; background: transparent; }
+.summary-table th { text-align: left; width: 30%; padding: 12px 16px; color: rgba(0,0,0,0.65); font-weight: 700; letter-spacing: 0.2px; }
+.summary-table td { padding: 12px 16px; border-bottom: 1px solid #f2f2f2; color: rgba(0,0,0,0.85); }
+
+.table-wrapper { max-height: 340px; overflow: auto; padding-right: 4px; background: #fff; border-radius: 4px; }
+.dialog-title { font-size: 1.5rem; margin: -18px -28px 16px -28px; padding: 14px 18px; background: #4caf50; color: #fff; border-radius: 6px 6px 0 0; box-shadow: 0 1px 0 rgba(0,0,0,0.04) inset; }
+.dialog-controls { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.dialog-actions { margin-top:12px; }
+
+/* Table header styling */
+.mat-header-row, .mat-header-cell, th.mat-header-cell {
+	background: #fafafa;
+	color: rgba(0,0,0,0.75);
+	font-weight: 700;
+}
+
+/* Zebra rows for readability */
+.mat-row:nth-child(even), tbody tr:nth-child(even) {
+	background: #fbfbfb;
+}
+
+/* Make close button more visible */
+.dialog-actions button.mat-button {
+	background: transparent;
+	color: rgba(0,0,0,0.87);
+	border-radius: 6px;
+}
+
+/* Slight card look */
+:host {
+	background: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* Responsive tweaks */
+@media (max-width: 720px) {
+	:host { padding: 12px; }
+	.dialog-title { font-size: 1.2rem; }
+	.table th, .table td, .summary-table th, .summary-table td { padding: 10px; }
+}

@@ -1,0 +1,73 @@
+.menu-text {
+  font-size: 1.4rem !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
+a[mat-list-item] .menu-text {
+  font-size: 1.4rem !important;
+  font-weight: 500;
+  color: #ffffffe8 !important;
+}
+
+.mat-icon {
+  color: #ffffffe8 !important;
+  line-height: 1.3 !important;
+}
+
+.margin-left {
+  margin-left: 10px;
+}
+
+a[mat-list-item]:hover {
+  background-color: #ffffff4b !important; // Fondo rojo (puedes cambiar el color)            // Texto blanco
+  border-radius: 8px;                   // Opcional: bordes redondeados
+}
+
+// Optimización para pantallas HD en sidebar
+@media screen and (max-width: 1280px) {
+  // Reducir el tamaño del ícono de usuario
+  .admin-info .material-symbols-outlined {
+    font-size: 140px !important;
+  }
+  
+  // Hacer el texto más compacto
+  .admin-info .fw-bold {
+    font-size: 1.1rem !important;
+  }
+  
+  .admin-info .text-secondary {
+    font-size: 0.8rem !important;
+  }
+  
+  // Reducir el tamaño de los elementos del menú
+  .menu-text {
+    font-size: 1.2rem !important;
+  }
+  
+  a[mat-list-item] .menu-text {
+    font-size: 1.2rem !important;
+  }
+  
+  // Reducir padding de los elementos del menú
+  a[mat-list-item] {
+    padding: 8px 16px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .margin-bottom {
+    margin-bottom: 8px !important;
+  }
+  
+  .margin-left {
+    margin-left: 8px !important;
+  }
+  
+  // Reducir padding del sidebar completo
+  .sidebar {
+    padding: 15px !important;
+  }
+}

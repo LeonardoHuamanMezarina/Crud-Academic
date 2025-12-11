@@ -1,0 +1,330 @@
+.correo-col {
+  max-width: 200px; // o el ancho que prefieras
+  white-space: normal; // permite saltos de línea
+  word-break: break-all; // fuerza el salto si es necesario
+}
+
+.estado-badge {
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  border: 2px solid;
+  display: inline-block;
+}
+
+.estado-activo {
+  color: #218838;
+  background: #e6f9ec;
+  border-color: #7be495;
+}
+
+.estado-inactivo {
+  color: #c82333;
+  background: #fdeaea;
+  border-color: #f5b7b1;
+}
+
+
+.btn-agregar-cliente {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #ff9800 0%, #ffb74d 100%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 22px;
+  padding: 8px 14px;
+}
+
+.btn-agregar-cliente:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+}
+
+.icono-mas {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-left: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-reportes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #ce2620 0%, #f01c3f 100%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 22px;
+  padding: 8px 14px;
+}
+
+.customer-list-container {
+  padding: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-height: calc(100vh - 140px);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 20px;
+  overflow: hidden;
+}
+
+.page-header {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.page-title {
+  color: #333;
+  margin: 0;
+  font-weight: 600;
+}
+
+// Layout principal - sidebar izquierda, contenido derecha
+.main-layout {
+  display: flex;
+  height: 100vh;
+}
+
+// Sidebar a la izquierda
+.sidebar-fixed {
+  width: 320px;
+  flex-shrink: 0;
+}
+
+// Contenido a la derecha del sidebar
+.right-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// Header en la parte superior del contenido derecho
+.header-fixed {
+  background: #23272f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  gap: 20px;
+}
+
+// Contenido principal debajo del header
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+}
+
+.customer-list-container {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+// Selector específico para mat-elevation-z8 - Exactamente como customer-list
+:host ::ng-deep .mat-elevation-z8 th {
+  background-color: #6AB15C !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+// Estilos para botones de acciones en FILA HORIZONTAL - Exactamente como customer-list
+.acciones-cell {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 5px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  min-height: 48px !important;
+  padding: 12px 14px !important;
+}
+
+// Asegurar que todas las celdas tengan la misma altura y alineación - Como customer-list
+:host ::ng-deep .mat-table .mat-cell {
+  padding: 12px 14px !important;
+  vertical-align: middle !important;
+}
+
+// Selectores más específicos para eliminar márgenes de íconos en botones Material Design - Como customer-list
+:host ::ng-deep .mat-mdc-raised-button > .mat-icon {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+
+
+// Optimización para pantallas HD (1280px)
+@media screen and (max-width: 1280px) {
+  // Reducir padding del contenido principal
+  .main-content {
+    padding: 15px !important;
+  }
+  
+  // Ajustar el sidebar para pantallas más pequeñas
+  .sidebar-fixed {
+    width: 260px !important;
+  }
+  
+  // Reducir padding de la tabla
+  .customer-list-container {
+    padding: 15px !important;
+  }
+  
+  // Hacer la tabla más compacta - Usando mat-table como customer-list
+  :host ::ng-deep .mat-table .mat-header-cell {
+    padding: 6px 8px !important;
+    font-size: 0.85rem !important;
+    font-weight: bold !important;
+  }
+  
+  :host ::ng-deep .mat-table .mat-cell {
+    padding: 6px 8px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  // Reducir tamaño de botones de acción - Como customer-list
+  :host ::ng-deep .mat-cell.acciones-cell .mat-raised-button {
+    min-width: 28px !important;
+    width: 28px !important;
+    height: 28px !important;
+    
+    .mat-icon {
+      font-size: 14px !important;
+      width: 14px !important;
+      height: 14px !important;
+    }
+  }
+  
+  // Reducir gap entre botones - Como customer-list
+  .acciones-cell {
+    gap: 2px !important;
+    padding: 6px 8px !important;
+    min-height: 40px !important;
+  }
+  
+  // Reducir padding del header
+  .header-fixed {
+    padding: 0 15px !important;
+    min-height: 60px !important;
+  }
+  
+  // Hacer los botones del header más compactos
+  .btn-agregar-cliente, .btn-reportes {
+    padding: 5px 10px !important;
+    font-size: 0.9rem !important;
+    border-radius: 18px !important;
+  }
+  
+  // Reducir el icono-mas en los botones del header
+  .icono-mas {
+    padding: 1px 6px !important;
+    font-size: 1.2rem !important;
+    margin-left: 4px !important;
+  }
+  
+  // Ajustar gap entre botones del header
+  .header-actions {
+    gap: 15px !important;
+  }
+  
+  // Hacer los badges de estado más compactos
+  .estado-badge {
+    padding: 1px 8px !important;
+    font-size: 0.75rem !important;
+    border-radius: 10px !important;
+  }
+}
+
+// Para pantallas aún más pequeñas (laptops pequeños)
+@media screen and (max-width: 1024px) {
+  .sidebar-fixed {
+    width: 250px !important;
+  }
+  
+  .main-content {
+    padding: 10px !important;
+  }
+  
+  // Hacer scroll horizontal en la tabla si es necesario
+  .table-container {
+    overflow-x: auto !important;
+  }
+}
+
+/* Hover effects y responsividad */
+.table-container table tbody tr:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.2s ease;
+}
+
+.table-container table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.table-container table tbody tr:nth-child(even):hover {
+  background-color: #f0f0f0;
+}
+
+/* Mensaje cuando no hay productos */
+.no-products-message {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 1200px) {
+  .table-container {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .table-container table {
+    min-width: 1200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-container table th,
+  .table-container table td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+  
+  .table-container table th:nth-child(3), /* Descripción */
+  .table-container table td:nth-child(3) {
+    width: 150px;
+    max-width: 150px;
+  }
+}
+
+

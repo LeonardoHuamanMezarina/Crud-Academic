@@ -1,0 +1,173 @@
+/* Reutilizamos la mayoría de estilos del listado de clientes para mantener coherencia visual */
+.correo-col {
+  max-width: 200px;
+  white-space: normal;
+  word-break: break-all;
+}
+
+.estado-badge {
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  border: 2px solid;
+  display: inline-block;
+}
+
+.estado-activo {
+  color: #218838;
+  background: #e6f9ec;
+  border-color: #7be495;
+}
+
+.estado-inactivo {
+  color: #c82333;
+  background: #fdeaea;
+  border-color: #f5b7b1;
+}
+
+
+.btn-agregar-cliente {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #ff9800 0%, #ffb74d 100%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 22px;
+  padding: 8px 14px;
+}
+
+
+.icono-mas {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-left: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-reportes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #ce2620 0%, #f01c3f 100%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 22px;
+  padding: 8px 14px;
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 22px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+}
+
+.btn-pill--white {
+  background: #ffffff;
+  color: #111;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06) inset;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.btn-pill--green {
+  background: linear-gradient(90deg, #6ab15c 0%, #4fa048 100%);
+  color: #fff;
+}
+
+.btn-pill--ghost {
+  background: transparent;
+  color: #ddd;
+  border: 1px solid transparent;
+}
+
+.btn-pill--dark {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+  background-color: #23272f;
+  color: #f6f7f8;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25) inset;
+}
+
+.btn-pill:hover { transform: translateY(-1px); }
+.btn-pill:active { transform: translateY(0); }
+
+.btn-pill.active {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+
+.select-pill { -webkit-appearance: none; -moz-appearance: none; appearance: none; padding-right: 24px; position: relative; }
+.select-pill.btn-pill { border: none; background-clip: padding-box; }
+.select-pill { background-image: linear-gradient(45deg, transparent 50%, rgba(0,0,0,0.25) 50%), linear-gradient(135deg, rgba(0,0,0,0.25) 50%, transparent 50%); background-position: calc(100% - 12px) calc(50% - 3px), calc(100% - 6px) calc(50% - 3px); background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; }
+.select-pill.no-caret { background-image: none !important; padding-right: 12px !important; }
+.btn-pill--white.select-pill { color: #111; }
+.sort-action .select-pill, .status-filters .select-pill { min-width: 120px; text-align: left; }
+.left-controls { display: flex; align-items: center; gap: 10px; margin-right: 8px; }
+.status-filters .select-pill { min-width: 140px; }
+
+.main-layout { display: flex; height: 100vh; }
+.right-content { flex: 1; display: flex; flex-direction: column; }
+.header-fixed { background: #23272f; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; width: 100%; }
+.header-actions { display: flex; gap: 20px; }
+.filters-actions { display: flex; align-items: center; gap: 12px; }
+.sort-action .btn-ordenar { padding: 6px 10px; }
+.main-content { flex: 1; padding: 20px; overflow-y: auto; background-color: #f5f5f5; }
+.table-container { width: 100%; max-width: 100%; overflow-x: auto; }
+
+:host ::ng-deep .mat-elevation-z8 th { background-color: #6AB15C !important; color: white !important; font-weight: bold !important; }
+.acciones-cell { display: flex !important; flex-direction: row !important; gap: 5px !important; align-items: center !important; justify-content: flex-start !important; min-height: 48px !important; padding: 12px 14px !important; }
+.acciones-header { text-align: center !important; justify-content: center !important; }
+.acciones-cell { display: flex !important; justify-content: center !important; align-items: center !important; gap: 8px !important; padding: 8px !important; text-align: center !important; }
+.btn-accion { min-width: 40px !important; width: 40px !important; height: 40px !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 !important; }
+
+/* Styles for hover and low-stock badge */
+.pedido-hover:hover { background-color: rgba(0,0,0,0.03); }
+.low-stock-badge { display: inline-block; padding: 4px 8px; border-radius: 12px; font-weight: 700; background: #f8d7da; color: #721c24; }
+
+/* Styles for pedidos with high total */
+.pedido-high {
+  background-color: #d4edda !important; /* light green */
+  color: #155724 !important; /* dark green text */
+}
+.pedido-low {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+:host ::ng-deep .mat-table .mat-cell { padding: 12px 14px !important; vertical-align: middle !important; }
+:host ::ng-deep .mat-mdc-raised-button > .mat-icon { margin-right: 0 !important; margin-left: 8 !important; }
+:host ::ng-deep .mat-mdc-raised-button.mat-accent{ --mdc-protected-button-container-color: rgb(42, 189, 13); --mdc-protected-button-label-text-color: white; }
+
+@media screen and (max-width: 1280px) {
+  .main-content { padding: 15px !important; }
+  .sidebar-fixed { width: 260px !important; }
+  .customer-list-container { padding: 15px !important; }
+  :host ::ng-deep .mat-table .mat-cell { padding: 6px 8px !important; font-size: 0.85rem !important; }
+  :host ::ng-deep .mat-table .mat-header-cell { padding: 6px 8px !important; font-size: 0.85rem !important; font-weight: bold !important; }
+  :host ::ng-deep .mat-cell.acciones-cell .mat-raised-button { min-width: 28px !important; width: 28px !important; height: 28px !important; .mat-icon { font-size: 14px !important; width: 14px !important; height: 14px !important; } }
+  .acciones-cell { gap: 2px !important; padding: 6px 8px !important; min-height: 40px !important; }
+  .correo-col { max-width: 120px !important; font-size: 0.8rem !important; }
+  .header-fixed { padding: 0 15px !important; min-height: 60px !important; }
+  .btn-agregar-cliente, .btn-reportes { padding: 5px 10px !important; font-size: 0.9rem !important; border-radius: 18px !important; }
+  .icono-mas { padding: 1px 6px !important; font-size: 1.2rem !important; margin-left: 4px !important; }
+  .header-actions { gap: 15px !important; }
+  .estado-badge { padding: 1px 8px !important; font-size: 0.75rem !important; border-radius: 10px !important; }
+  :host ::ng-deep .mat-table .mat-row { min-height: 40px !important; }
+}

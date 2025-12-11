@@ -1,0 +1,83 @@
+<!-- Reutiliza la misma estructura del listado de clientes para mantener diseño coherente -->
+<div class="main-layout">
+  <app-sidebar class="sidebar-fixed"></app-sidebar>
+
+  <div class="right-content">
+    <div class="header-fixed">
+      <app-header></app-header>
+      <div class="header-actions">
+        <div class="left-controls">
+          <div class="sort-action">
+            <select #sortSelect class="select-pill btn-pill btn-pill--white btn-ordenar no-caret" (change)="onSortChange(sortSelect.value)">
+              <option value="true">Recientes ↓</option>
+              <option value="false">Antiguos ↑</option>
+            </select>
+          </div>
+          <div class="status-filters">
+            <select #statusSelect class="select-pill btn-pill btn-pill--white" (change)="onStatusChange(statusSelect.value)">
+              <option value="ALL">Todos</option>
+              <option value="P">Pendientes</option>
+              <option value="C">Completados</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn-reportes" (click)="openAddDialog()">Agregar</button>
+
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="customer-list-container">
+        <div class="table-container">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="idPedido">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let pedido"> {{pedido.idPedido}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="cliente">
+              <th mat-header-cell *matHeaderCellDef> Cliente </th>
+              <td mat-cell *matCellDef="let pedido"> {{pedido.clienteNombre || pedido.clienteId}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+              <th mat-header-cell *matHeaderCellDef> Total </th>
+              <td mat-cell *matCellDef="let pedido"> {{pedido.total | currency}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="cantidad">
+              <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+              <td mat-cell *matCellDef="let pedido"> {{pedido.productCount || (pedido.details?.length || 0)}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechaPedido">
+              <th mat-header-cell *matHeaderCellDef> Fecha </th>
+              <td mat-cell *matCellDef="let pedido"> {{pedido.fechaPedido | date:'dd/MM/yyyy'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Estado </th>
+              <td mat-cell *matCellDef="let pedido"> {{pedido.status || pedido.state || '-' }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef class="acciones-header"> Acciones </th>
+              <td mat-cell *matCellDef="let pedido" class="acciones-cell">
+                <button mat-raised-button color="primary" class="btn-accion" (click)="verPedido(pedido.idPedido)">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" [appPedidoStyle]="row.total" appPedidoHover></tr>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

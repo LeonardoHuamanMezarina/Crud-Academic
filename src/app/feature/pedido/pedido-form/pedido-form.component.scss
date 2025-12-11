@@ -1,0 +1,15 @@
+.pedido-form { padding: 12px; }
+.row { display:flex; gap:12px; margin-bottom:12px; }
+.field { flex:1; }
+.products { border-top:1px solid #eee; padding-top:12px; }
+.products-header { display:flex; gap:12px; padding:8px 4px; font-weight:700; }
+.product-row { display:flex; gap:12px; align-items:center; padding:8px 4px; }
+.product-select { flex:1; }
+.product-qty { width:140px; }
+.product-actions { width:48px; text-align:center; }
+.products-footer { margin-top:8px; }
+.form-footer { display:flex; justify-content:space-between; align-items:center; margin-top:12px; }
+.form-footer .footer-left { display:flex; align-items:center; }
+.form-footer .footer-right { display:flex; gap:12px; align-items:center; }
+.btn-add-product { background: #6f42c1; color: white; }
+.product-select { flex: 0.7; min-width: 220px; }

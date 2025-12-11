@@ -1,0 +1,59 @@
+header {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 160px;
+  background: #23272f;  
+  color: white;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.brand-info h1 {
+  margin: 0;
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.brand-info p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+// Optimización para pantallas HD en header
+@media screen and (max-width: 1280px) {
+  header {
+    padding: 0 20px !important;
+    height: 120px !important;
+  }
+  
+  .brand-info h1 {
+    font-size: 1.8rem !important;
+  }
+  
+  .brand-info p {
+    font-size: 1rem !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  header {
+    padding: 0 15px !important;
+    height: 100px !important;
+  }
+  
+  .brand-info h1 {
+    font-size: 1.6rem !important;
+  }
+  
+  .brand-info p {
+    font-size: 0.9rem !important;
+  }
+}

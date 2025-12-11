@@ -1,0 +1,415 @@
+.correo-col {
+  max-width: 200px; // o el ancho que prefieras
+  white-space: normal; // permite saltos de línea
+  word-break: break-all; // fuerza el salto si es necesario
+}
+
+.estado-badge {
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  border: 2px solid;
+  display: inline-block;
+}
+
+.estado-activo {
+  color: #218838;
+  background: #e6f9ec;
+  border-color: #7be495;
+}
+
+.estado-inactivo {
+  color: #c82333;
+  background: #fdeaea;
+  border-color: #f5b7b1;
+}
+
+
+.btn-agregar-cliente {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #ff9800 0%, #ffb74d 100%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 22px;
+  padding: 8px 14px;
+}
+
+
+
+.icono-mas {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-left: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-reportes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #ce2620 0%, #f01c3f 100%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 22px;
+  padding: 8px 14px;
+}
+
+/* Botón tipo píldora (utilidad para replicar estilo consistente) */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 22px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+}
+
+/* Variantes */
+.btn-pill--white {
+  background: #ffffff;
+  color: #111;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06) inset;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.btn-pill--green {
+  background: linear-gradient(90deg, #6ab15c 0%, #4fa048 100%);
+  color: #fff;
+}
+
+.btn-pill--ghost {
+  background: transparent;
+  color: #ddd;
+  border: 1px solid transparent;
+}
+
+/* Variante oscura para integrarse con el header fondo oscuro */
+.btn-pill--dark {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+  background-color: #23272f; /* mismo tono del header */
+  color: #f6f7f8;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25) inset;
+}
+
+.btn-pill:hover { transform: translateY(-1px); }
+.btn-pill:active { transform: translateY(0); }
+
+/* Estado activo añadido para integrarse con [class.active] en template */
+.btn-pill.active {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+
+/* Estilo para selects con apariencia de píldora */
+.select-pill {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 24px; /* espacio para caret */
+  position: relative;
+}
+
+/* Quitar borde por defecto y hacer que herede la apariencia .btn-pill */
+.select-pill.btn-pill {
+  border: none;
+  background-clip: padding-box;
+}
+
+/* Flecha personalizada (usamos un pequeño caret dentro del select) */
+.select-pill {
+  background-image: linear-gradient(45deg, transparent 50%, rgba(0,0,0,0.25) 50%), linear-gradient(135deg, rgba(0,0,0,0.25) 50%, transparent 50%);
+  background-position: calc(100% - 12px) calc(50% - 3px), calc(100% - 6px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* Eliminar flecha/caret para selects a los que se aplique .no-caret (p.ej. sort) */
+.select-pill.no-caret {
+  background-image: none !important;
+  padding-right: 12px !important;
+}
+
+/* Ajustes específicos para la variante blanca (texto oscuro) */
+.btn-pill--white.select-pill {
+  color: #111;
+}
+
+/* Ajustes de tamaño y responsivo para selects en header */
+.sort-action .select-pill, .status-filters .select-pill {
+  min-width: 120px;
+  text-align: left;
+}
+
+/* Contenedor izquierdo para ordenar y filtro 'Todos' */
+.left-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 8px;
+}
+
+.status-filters .select-pill {
+  min-width: 140px; /* un poco más ancho para 'Todos/Activos/Inactivos' */
+}
+
+
+
+
+// Layout principal - sidebar izquierda, contenido derecha
+.main-layout {
+  display: flex;
+  height: 100vh;
+}
+
+
+// Contenido a la derecha del sidebar
+.right-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// Header en la parte superior del contenido derecho
+.header-fixed {
+  background: #23272f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  gap: 20px;
+}
+
+/* Styles for sort and status filter controls */
+.filters-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.sort-action .btn-ordenar {
+  /* Mantener la clase .btn-ordenar como hook si se necesita JS específico */
+  padding: 6px 10px;
+}
+
+
+
+// Contenido principal debajo del header
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+}
+
+
+
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+
+
+// Selector específico para mat-elevation-z8
+:host ::ng-deep .mat-elevation-z8 th {
+  background-color: #6AB15C !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+
+
+// Estilos para botones de acciones en FILA HORIZONTAL
+.acciones-cell {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 5px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  min-height: 48px !important;
+  padding: 12px 14px !important;
+}
+
+// Estilos para centrar la columna de acciones
+.acciones-header {
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+.acciones-cell {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px !important;
+  text-align: center !important;
+}
+
+.btn-accion {
+  min-width: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  
+  mat-icon {
+    margin: 0 !important;
+    font-size: 18px !important;
+  }
+}
+
+
+// Asegurar que todas las celdas tengan la misma altura y alineación
+:host ::ng-deep .mat-table .mat-cell {
+  padding: 12px 14px !important;
+  vertical-align: middle !important;
+}
+
+
+// Selectores más específicos para eliminar márgenes de íconos en botones Material Design
+:host ::ng-deep .mat-mdc-raised-button > .mat-icon {
+  margin-right: 0 !important;
+  margin-left: 8 !important;
+}
+
+
+:host ::ng-deep .mat-mdc-raised-button.mat-accent{
+    --mdc-protected-button-container-color: rgb(42, 189, 13);
+    --mdc-protected-button-label-text-color: white;
+}
+
+
+// Optimización para pantallas HD (1280px)
+@media screen and (max-width: 1280px) {
+  // Reducir padding del contenido principal
+  .main-content {
+    padding: 15px !important;
+  }
+  
+  // Ajustar el sidebar para pantallas más pequeñas
+  .sidebar-fixed {
+    width: 260px !important;
+  }
+  
+  // Reducir padding de la tabla
+  .customer-list-container {
+    padding: 15px !important;
+  }
+  
+  // Hacer la tabla más compacta
+  :host ::ng-deep .mat-table .mat-cell {
+    padding: 6px 8px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  :host ::ng-deep .mat-table .mat-header-cell {
+    padding: 6px 8px !important;
+    font-size: 0.85rem !important;
+    font-weight: bold !important;
+  }
+  
+  // Reducir tamaño de botones de acción
+  :host ::ng-deep .mat-cell.acciones-cell .mat-raised-button {
+    min-width: 28px !important;
+    width: 28px !important;
+    height: 28px !important;
+    
+    .mat-icon {
+      font-size: 14px !important;
+      width: 14px !important;
+      height: 14px !important;
+    }
+  }
+  
+  // Reducir gap entre botones
+  .acciones-cell {
+    gap: 2px !important;
+    padding: 6px 8px !important;
+    min-height: 40px !important;
+  }
+  
+  // Ajustar columna de email para que no ocupe tanto espacio
+  .correo-col {
+    max-width: 120px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  // Reducir padding del header
+  .header-fixed {
+    padding: 0 15px !important;
+    min-height: 60px !important;
+  }
+  
+  // Hacer los botones del header más compactos
+  .btn-agregar-cliente, .btn-reportes {
+    padding: 5px 10px !important;
+    font-size: 0.9rem !important;
+    border-radius: 18px !important;
+  }
+  
+  // Reducir el icono-mas en los botones del header
+  .icono-mas {
+    padding: 1px 6px !important;
+    font-size: 1.2rem !important;
+    margin-left: 4px !important;
+  }
+  
+  // Ajustar gap entre botones del header
+  .header-actions {
+    gap: 15px !important;
+  }
+  
+  // Hacer los badges de estado más compactos
+  .estado-badge {
+    padding: 1px 8px !important;
+    font-size: 0.75rem !important;
+    border-radius: 10px !important;
+  }
+  
+  // Reducir altura de filas de la tabla
+  :host ::ng-deep .mat-table .mat-row {
+    min-height: 40px !important;
+  }
+}
+
+// Para pantallas aún más pequeñas (laptops pequeños)
+@media screen and (max-width: 1024px) {
+  .sidebar-fixed {
+    width: 250px !important;
+  }
+  
+  .main-content {
+    padding: 10px !important;
+  }
+  
+  // Hacer scroll horizontal en la tabla si es necesario
+  .table-container {
+    overflow-x: auto !important;
+  }
+}

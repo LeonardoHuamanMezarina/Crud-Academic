@@ -1,0 +1,114 @@
+<div class="d-flex text-center" style="position: relative;">
+    <!-- Close icon in top-right corner -->
+    <button mat-icon-button type="button" aria-label="Cerrar" (click)="closeWithConfirm()" style="position: absolute; right: 8px; top: 8px; z-index: 10;">
+        <mat-icon>close</mat-icon>
+    </button>
+    <form class="form-dark" [formGroup]="form" (ngSubmit)="actualizarCliente()">
+        <h2 class="text-center mb-4" style="margin: 20px;">Editar cliente</h2>
+
+        <mat-form-field appearance="fill" class="w-75 mb-2" color="warn">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="firstName" required>
+            <mat-error *ngIf="form.get('firstName')?.hasError('required')">
+                Se requiere nombre
+            </mat-error>
+            <mat-error *ngIf="form.get('firstName')?.hasError('pattern') && form.get('firstName')?.touched">
+                Solo debe insertar letras
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-75 mb-2" color="warn">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="lastName" required>
+            <mat-error *ngIf="form.get('lastName')?.hasError('required')">
+                Se requiere lastName
+            </mat-error>
+            <mat-error *ngIf="form.get('lastName')?.hasError('pattern') && form.get('lastName')?.touched">
+                Solo debe insertar letras
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-75 mb-2" color="warn">
+            <mat-label>Correo</mat-label>
+            <input matInput formControlName="email" placeholder="example@gmail.com" required type="email">
+            <mat-error *ngIf="form.get('email')?.hasError('required')">
+                El correo es obligatorio
+            </mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">
+                Ingresa un correo válido (debe contener &#64;)
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-75 mb-2" color="warn">
+            <mat-label>Tipo Documento</mat-label>
+            <mat-select formControlName="documentType" required>
+                <mat-option value="DNI">DNI</mat-option>
+                <mat-option value="CARNET">Carnet De Extranjeria</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('documentType')?.hasError('required') && form.get('documentType')?.touched">
+                Se requiere tipo de documento
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Número de Documento, visible solo si se selecciona un tipo -->
+        <mat-form-field *ngIf="form.get('documentType')?.value" appearance="fill" class="w-75 mb-2" color="warn">
+            <mat-label>Número de Documento</mat-label>
+            <input matInput formControlName="documentNumber" required
+                maxlength="{{ form.get('documentType')?.value === 'DNI' ? 8 : 15 }}" (keypress)="soloNumeros($event)">
+            <mat-error *ngIf="form.get('documentNumber')?.hasError('required') && form.get('documentNumber')?.touched">
+                Se requiere número de documento
+            </mat-error>
+            <mat-error
+                *ngIf="form.get('documentType')?.value === 'DNI' && form.get('documentNumber')?.hasError('pattern')">
+                El DNI debe tener exactamente 8 números
+            </mat-error>
+            <mat-error
+                *ngIf="form.get('documentType')?.value === 'CARNET' && form.get('documentNumber')?.hasError('pattern')">
+                El Carnet debe tener exactamente 15 números
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Fecha de Nacimiento -->
+        <mat-form-field appearance="fill" class="w-75 mb-2" color="warn">
+            <mat-label>Fecha de Nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthDate" [max]="maxDate" required readonly>
+            <mat-datepicker-toggle matIconSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="form.get('birthDate')?.hasError('required') && form.get('birthDate')?.touched">
+                La fecha de nacimiento es obligatoria
+            </mat-error>
+            <mat-error *ngIf="form.get('birthDate')?.hasError('minimumAge') && form.get('birthDate')?.touched">
+                Debe ser mayor de 18 años
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-75 mb-2" color="warn">
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControlName="phone" required maxlength="9" (keypress)="telefono($event)">
+            <mat-error *ngIf="form.get('phone')?.hasError('required') && form.get('phone')?.touched">
+                El teléfono es obligatorio
+            </mat-error>
+            <mat-error *ngIf="form.get('phone')?.hasError('pattern') && form.get('phone')?.touched">
+                El teléfono debe tener 9 números y empezar con 9
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-75 mb-2" color="warn">
+            <mat-label>Dirección</mat-label>
+            <input matInput formControlName="address" required>
+            <mat-error *ngIf="form.get('address')?.hasError('required') && form.get('address')?.touched">
+                Se requiere dirección
+            </mat-error>
+        </mat-form-field>
+
+        <div class="text-center mt-2">
+            <!-- Botón para actualizar -->
+            <button mat-raised-button type="submit" color="primary" class="btn-green" [disabled]="form.invalid">
+                Actualizar
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Estilos globales para headers de tabla Material */
+.mat-table .mat-header-cell {
+  background-color: #6AB15C !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.mat-header-row {
+  background-color: #6AB15C !important;
+}
+
+.mat-header-row .mat-header-cell {
+  background-color: #6AB15C !important;
+  color: white !important;
+  font-weight: bold !important;
+}

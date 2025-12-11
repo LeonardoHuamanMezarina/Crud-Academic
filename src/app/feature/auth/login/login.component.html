@@ -1,0 +1,33 @@
+<div class="login-wrapper">
+  <div class="card">
+    <div class="brand">
+      <div class="logo">R</div>
+      <div>
+        <h2>Rinconcito Yauyinos</h2>
+        <p>Accede a tu panel</p>
+      </div>
+    </div>
+
+    <form (ngSubmit)="submit()" class="form">
+      <label>
+        <span>Usuario</span>
+        <input [(ngModel)]="username" name="username" required />
+      </label>
+
+      <label>
+        <span>Contraseña</span>
+        <input type="password" [(ngModel)]="password" name="password" required />
+      </label>
+
+      <button class="btn" type="submit" [disabled]="loading">
+            <span [hidden]="loading">Ingresar</span>
+            <span [hidden]="!loading" class="loader"></span>
+      </button>
+      <p class="error" [hidden]="!error">{{ error }}</p>
+
+      <div class="register-link">
+        <button type="button" class="register-small" (click)="goRegister()">Registrarse</button>
+      </div>
+    </form>
+  </div>
+</div>

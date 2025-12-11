@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://as241s3-t06-be-2.onrender.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "xfwd": false
+  }
+}

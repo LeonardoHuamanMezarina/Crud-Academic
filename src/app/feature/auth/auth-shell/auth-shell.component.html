@@ -1,0 +1,67 @@
+<div class="auth-shell">
+  <div class="panel left" [class.shifted]="showRegister">
+    <div class="auth-shell">
+      <div class="panel left" [class.shifted]="showRegister">
+        <div class="content">
+          <h2>Hello, Welcome!</h2>
+          <p>Don't have an account?</p>
+          <button class="outline" (click)="toggle('register')">Register</button>
+        </div>
+      </div>
+
+      <div class="panel right" [class.shifted]="!showRegister">
+        <div class="content">
+          <h2>Welcome Back!</h2>
+          <p>Already have an account?</p>
+          <button class="outline" (click)="toggle('login')">Login</button>
+        </div>
+      </div>
+
+      <div class="card-wrapper">
+        <div class="card" [class.show-register]="showRegister">
+          <div class="inner left-inner">
+            <!-- Login form inline -->
+            <form *ngIf="!showRegister" (ngSubmit)="submitLogin()" class="form-inline">
+              <h3>Accede a tu panel</h3>
+              <label>
+                <span>Usuario</span>
+                <input [(ngModel)]="username" name="username" required />
+              </label>
+              <label>
+                <span>Contraseña</span>
+                <input type="password" [(ngModel)]="password" name="password" required />
+              </label>
+              <button class="btn" type="submit" [disabled]="loading">
+                <span [hidden]="loading">Ingresar</span>
+                <span [hidden]="!loading" class="loader"></span>
+              </button>
+              <p class="error" [hidden]="!error">{{ error }}</p>
+            </form>
+
+            <!-- Register form inline -->
+            <form *ngIf="showRegister" (ngSubmit)="submitRegister()" class="form-inline">
+              <h3>Crear cuenta</h3>
+              <label>
+                <span>Usuario</span>
+                <input [(ngModel)]="username" name="rusername" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" [(ngModel)]="email" name="email" required />
+              </label>
+              <label>
+                <span>Contraseña</span>
+                <input type="password" [(ngModel)]="password" name="rpassword" required />
+              </label>
+              <button class="btn" type="submit" [disabled]="loading">
+                <span [hidden]="loading">Registrarme</span>
+                <span [hidden]="!loading" class="loader"></span>
+              </button>
+              <p class="error" [hidden]="!error">{{ error }}</p>
+            </form>
+          </div>
+
+          <div class="inner right-inner" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,77 @@
+.auth-shell{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,#eef4ff,#f0f9ff);
+  position:relative;
+  padding:30px 20px;
+}
+.panel{position:absolute;top:32px;bottom:32px;width:45%;border-radius:22px;display:flex;align-items:center;justify-content:center;transition:all .6s cubic-bezier(.2,.9,.2,1);overflow:hidden}
+.panel.left{left:24px;background:linear-gradient(120deg,#7ea2ff,#8fb4ff);color:#fff;padding-left:48px}
+.panel.right{right:24px;background:linear-gradient(120deg,#72e0b8,#3fd08a);color:#fff;padding-right:48px}
+.panel .content{text-align:center;padding:24px}
+.panel h2{font-size:26px;margin:0 0 6px}
+.panel p{margin:0 0 12px;color:rgba(255,255,255,0.9)}
+.panel .outline{background:transparent;border:2px solid rgba(255,255,255,0.85);color:#fff;padding:8px 16px;border-radius:10px;cursor:pointer}
+.card-wrapper{width:560px;height:420px;position:relative;z-index:6;display:flex;align-items:center;justify-content:center}
+.card{width:100%;height:100%;background:#ffffff;border-radius:14px;box-shadow:0 18px 50px rgba(2,6,23,0.12);display:flex;overflow:hidden;transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+.inner{flex:1;padding:28px;display:flex;align-items:center;justify-content:center}
+.left-inner{width:50%;min-height:100%}
+.right-inner{width:50%;min-height:100%}
+.card.show-register{transform:translateX(-50%)}
+
+/* estilos para formularios inline dentro del shell */
+.form-inline{width:360px;background:#fff;padding:20px;border-radius:10px;box-shadow:0 8px 24px rgba(2,6,23,0.06)}
+.form-inline label{display:flex;flex-direction:column;margin-bottom:12px}
+.form-inline input{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+.form-inline h3{margin:0 0 10px}
+.form-inline .btn{width:100%;background:linear-gradient(90deg,#ff7a59,#ffb86b);border:none;color:#111;padding:10px;border-radius:8px}
+.form-inline .error{color:#ff7a7a;margin-top:8px}
+
+/* small decorative badge bottom-left */
+.card::after{content:"";position:absolute;left:14px;bottom:14px;width:14px;height:60px;background:linear-gradient(180deg,#ff9f43,#ffb86b);border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,0.14);z-index:8}
+
+/* responsive */
+@media (max-width:900px){
+  .panel{display:none}
+  .card-wrapper{width:360px;height:auto}
+  .card{flex-direction:column}
+  .card::after{left:10px;bottom:10px}
+}
+
+/* Overrides para los componentes Login/Register embebidos */
+.card .inner .login-wrapper,
+.card .inner .register-wrapper {
+  min-height: auto !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+.card .inner .login-wrapper .card,
+.card .inner .register-wrapper .card {
+  width: 360px !important;
+  max-width: 100% !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 10px !important;
+  padding: 0 !important;
+}
+
+.card .inner .login-wrapper .card .form,
+.card .inner .register-wrapper .card .form {
+  background: #ffffff !important;
+  padding: 18px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06) !important;
+  width: 100%;
+}
+
+.card .inner .login-wrapper .card .brand,
+.card .inner .register-wrapper .card .brand {
+  display: none !important; /* ocultar header duplicado dentro del shell */
+}
+

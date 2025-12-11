@@ -1,0 +1,54 @@
+.login-wrapper{
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg,#1f2933 0%, #111318 60%);
+}
+
+/* Ajustes cuando se renderiza embebido dentro del auth-shell */
+:host-context(.auth-shell) .login-wrapper{
+  min-height: auto;
+  background: transparent;
+}
+
+:host-context(.auth-shell) .login-wrapper .card{
+  background: transparent;
+  box-shadow: none;
+}
+
+:host-context(.auth-shell) .login-wrapper .form{
+  width:360px;
+  background:#fff;
+  padding:16px;
+  border-radius:8px;
+}
+.card{
+  width: 420px;
+  background: #0f1720;
+  color: #fff;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  transform: translateY(-10px);
+  animation: floatIn 600ms ease-out forwards;
+}
+.brand{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+.brand .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(90deg,#ff7a59,#ffb86b);display:flex;align-items:center;justify-content:center;font-weight:700}
+.brand h2{margin:0;font-size:20px}
+.brand p{margin:0;color:#cbd5e1}
+.form{display:flex;flex-direction:column;gap:12px}
+.form label{display:flex;flex-direction:column;font-size:13px;color:#cbd5e1}
+.form input{margin-top:6px;padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#fff}
+.btn{margin-top:6px;padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,#ff7a59,#ffb86b);border:none;color:#111;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.btn:disabled{opacity:0.7;cursor:not-allowed}
+.loader{width:18px;height:18px;border:3px solid rgba(0,0,0,0.1);border-left-color:#111;border-radius:50%;display:inline-block;animation:spin 800ms linear infinite}
+.error{color:#ff7a7a;margin-top:8px}
+
+/* Botón pequeño para 'Registrarse' que no compita con el CTA principal */
+.register-small{display:inline-block;margin-top:10px;padding:6px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:#fff;font-weight:600;cursor:pointer}
+.register-small:hover{background:rgba(255,255,255,0.03)}
+.register-small:active{transform:translateY(1px)}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes floatIn{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
