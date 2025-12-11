@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "6750a1be-57c9-4554-a1dd-bda8390b2810",
+		"name": "SQL_SERVER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43466066"
+	},
+	"item": [
+		{
+			"name": "FOLDER",
+			"item": [
+				{
+					"name": "CREATE | CREAR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"mezarina\",\r\n  \"contra\": \"123456\",\r\n  \"email\": \"asd@example.com\",\r\n  \"firstName\": \"leo\",\r\n  \"lastName\": \"huaman\",\r\n  \"documentType\": \"DNI\",\r\n  \"documentNumber\": \"42409057\",\r\n  \"phone\": \"950331199 \",\r\n  \"address\": \"Av. Principal 123\",\r\n  \"roles\": \"USER\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/crear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ | LISTAR",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ | LISTAR X ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/listar/id/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"listar",
+								"id",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ | LISTAR X ESTADO",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/listar/estado/A",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"listar",
+								"estado",
+								"A"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE | EDITAR",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idUsuario\": 2,\r\n  \"username\": \"123\",\r\n  \"contra\": \"456\",\r\n  \"email\": \"perez@email.com\",\r\n  \"firstName\": \"123\",\r\n  \"lastName\": \"asdfdfd\",\r\n  \"documentType\": \"DNI\",\r\n  \"documentNumber\": \"02345678\",\r\n  \"phone\": \"987614321\",\r\n  \"address\": \"Av. Siempre Viva 123\",\r\n  \"roles\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/editar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"editar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE | RESTAURAR",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/restaurar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"restaurar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE | ELIMINAR",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/eliminar/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"eliminar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

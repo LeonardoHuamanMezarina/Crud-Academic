@@ -1,0 +1,54 @@
+# ========================================
+# CONFIGURACIÓN SQL SERVER - HABILITADA
+# ========================================
+server:
+  # Use the port provided by Render (environment variable PORT). If not set, fall back to 8085.
+  port: ${PORT:8085}
+
+spring:
+  # ========== ORACLE CLOUD DATABASE (ACTIVO) ==========
+  datasource:
+    url: ${DB_URL:jdbc:oracle:thin:@SpringBoot_medium?TNS_ADMIN=./Wallet_SpringBoot}
+    #url: jdbc:oracle:thin:@SpringBoot_medium?TNS_ADMIN=C:\Users\Usuario\Documents\Wallet_SpringBoot
+    username: ${DB_USERNAME:DEVELOPER_01}
+    password: ${DB_PASSWORD:Admin12345678}
+    driver-class-name: ${DB_DRIVER:oracle.jdbc.OracleDriver}
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 10
+      connection-timeout: 30000
+      validation-timeout: 5000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1 FROM DUAL
+  jpa:
+    hibernate:
+      ddl-auto: none      # 'none' no valida ni crea tablas, usa las existentes
+    show-sql: true       # Ver las consultas SQL en logs
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+        transaction:
+          jta:
+            platform: org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform
+    open-in-view: false
+
+  main:
+    allow-bean-definition-overriding: true
+
+# ========================================
+# CONFIGURACIÓN JWT
+# ========================================
+jwt:
+  secret: 3c9a2f1b8e4d7a5c6f9b2e8a1d4c7f0b9e2a5d8c1f4a7b0e3d6c9f2a5b8e1d4c7f0a
+  expiration: 3600000  # 1 hora en milisegundos (1 * 60 * 60 * 1000)
+
+# ========================================
+# CONFIGURACIÓN DE LOGGING
+# ========================================
+logging:
+  level:
+    pe.edu.vallegrande.arquitectura: DEBUG
+    org.springframework.security: DEBUG
+    root: INFO
+    com.zaxxer.hikari: DEBUG

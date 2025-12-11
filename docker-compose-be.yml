@@ -1,0 +1,22 @@
+# docker-compose -f docker-compose-be.yml up -d
+# docker-compose -f docker-compose-be.yml down
+# /auth/users
+version: '3'
+
+services:
+  backend:
+    image: logan695/mi-tercer-action:8f95f83d6a6cdaf09113f07997b806f49e1f7a20 # cambiar por tu usuario de dockerhub
+    container_name: back-end
+    ports:
+      - "8090:8090"
+    environment:
+      - PORT=8090
+      - DB_URL=jdbc:oracle:thin:@SpringBoot_medium?TNS_ADMIN=./Wallet_SpringBoot
+      - DB_USERNAME=DEVELOPER_01
+      - DB_PASSWORD=Admin12345678
+      - DB_DRIVER=oracle.jdbc.OracleDriver
+# CREAR UNA RED EN ESTE COMPOSE PARA QUE SEA COMPARTIDA A FUTURO CON OTRO COMPOSE
+networks:
+  my-network:
+    name: my-network
+    driver: bridge
